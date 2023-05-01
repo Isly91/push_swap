@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:10:08 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/03/29 21:58:25 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/01 17:14:40 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
 
 typedef struct s_stack
 {
-	int				content;
-	char			c;
+	int			content;
+	int			index;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
 
-void	sort_elements(t_stack **stack);
+void	sort_elements(t_stack **stack, int argc);
 
 void	print_list(t_stack *stack);
 
@@ -38,16 +38,42 @@ void	lstadd_back(t_stack **lst, t_stack *new);
 
 t_stack	*lstnew(int content);
 
-void	swap(t_stack **stack, char c);
+void	swap(t_stack **stack);
 
-void	reverse_rotate(t_stack **stack, char c);
+void	reverse_rotate(t_stack **stack);
 
-void	rotate(t_stack **stack, char c);
+void	rotate(t_stack **stack);
 
-void	push(t_stack **stack_a, t_stack **stack_b, char c);
+void	push(t_stack **stack_a, t_stack **stack_b);
 
 char	**validate_input(char **input);
 
-int		ft_stacksize(t_stack *lst);
+int		ft_stacksize(t_stack *stack);
+
+void	ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int size);
+
+int	ft_stack_is_sorted(t_stack *stack);
+
+void	sort_3_elements(t_stack	**stack);
+
+void	pa(t_stack **stack_a, t_stack **stack_b);
+
+void	pb(t_stack **stack_b, t_stack **stack_a);
+
+void	ra(t_stack **stack);
+
+void	rb(t_stack **stack);
+
+void	rra(t_stack **stack);
+
+void	rrb(t_stack **stack);
+
+void	sa(t_stack **stack);
+
+void	sb(t_stack **stack);
+
+int	min_val_distance(t_stack *stack_a, int value);
+
+void	ft_free_leaks(t_stack *stack);
 
 #endif

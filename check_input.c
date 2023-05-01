@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/27 17:10:01 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/03/29 22:05:51 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/01 18:40:28 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_duplicate(char **input)
 	while (input[i])
 	{
 		e = i + 1;
-		while(input[e])
+		while (input[e])
 		{
 			if (ft_atoi(input[e]) == ft_atoi(input[i]))
 				return (1);
@@ -49,7 +49,6 @@ long	ft_long_atoi(const char *str)
 	i = 0;
 	number = LONG_MIN;
 	sign = 1;
-	
 	while ((str[i] < '0' || str[i] > '9'))
 	{
 		if ((str[i] == '-' || str[i] == '+')
@@ -86,13 +85,14 @@ int	check_error(char *input)
 	{
 		if (input[i] == '+' || input[i] == '-')
 		{
-			if (input[i+1] == '0')
+			if (input[i + 1] == '0')
 				return (1);
 		}
-		if ((input[i] >= '0' && input[i] <= '9') && (input[i+1] == '+' || input[i+1] == '-'))
+		if ((input[i] >= '0' && input[i] <= '9') && (input[i + 1] == '+'
+				|| input[i + 1] == '-'))
 			return (1);
 		if (ft_isnumber(input[i]) == 0)
-				return (1);
+			return (1);
 		i++;
 	}
 	if (ft_atoi(input) != ft_long_atoi(input))
@@ -102,7 +102,7 @@ int	check_error(char *input)
 
 char	**validate_input(char **input)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (input[i])

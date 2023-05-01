@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 12:12:45 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/03/28 18:05:18 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/01 17:14:30 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 void	print_list(t_stack *stack)
 {
+	if (stack == NULL)
+		ft_printf("Empty stack");
 	while (stack)
 	{
-		ft_printf("\nprint number: number: %i\n", stack->content);
+		ft_printf("print number: number: %i\n", stack->content);
 		stack = stack->next;
 	}
+	ft_printf("\n");
 }
 
-int	ft_stacksize(t_stack *lst)
+int	ft_stacksize(t_stack *stack)
 {
 	int	size;
 
 	size = 0;
-	while (lst != NULL)
+	while (stack)
 	{
 		size++;
-		lst = lst -> next ;
+		stack = stack->next;
 	}
 	return (size);
 }
@@ -65,5 +68,41 @@ void	lstadd_back(t_stack **lst, t_stack *new)
 	{
 		lista = lstlast(*lst);
 		lista ->next = new;
+	}
+}
+
+int	ft_stack_is_sorted(t_stack *stack)
+{
+	while (stack->next)
+	{
+		if (stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	min_val_distance(t_stack *stack_a, int value)
+{
+	int	distance;
+
+	distance = 0;
+	while (stack_a->next && stack_a->content != value)
+	{
+		distance++;
+		stack_a = stack_a->next;
+	}
+	return (distance);
+}
+
+void ft_free_leaks(t_stack *stack)
+{
+	t_stack *tmp;
+
+	while (stack)
+	{
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
 	}
 }

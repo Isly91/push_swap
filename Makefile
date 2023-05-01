@@ -2,7 +2,8 @@ SRC = push_swap.c \
 		sort_items.c \
 		push_swap_list_utils.c \
 		moves.c \
-		check_input.c
+		check_input.c \
+		radix_sort.c
 
 OBJSRC = $(SRC:.c=.o)
 
@@ -39,5 +40,8 @@ fclean : clean
 	@make fclean -C libft
 
 re : fclean all
+
+mem:
+	memdetect $(SRC) $(LIBFT) $(CFLAGS) $(1)
 
 .PHONY : all clean fclean
