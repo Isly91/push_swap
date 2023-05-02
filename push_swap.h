@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:10:08 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/05/01 17:14:40 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/02 10:40:40 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,18 @@
 
 typedef struct s_stack
 {
-	int			content;
-	int			index;
+	int				content;
+	int				index;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }	t_stack;
+
+int		ft_isnumber(int c);
+
+long	ft_long_atoi(const char *str);
+
+int		count_argc(char **argv);
+
+int		ft_duplicate(char **input);
 
 void	sort_elements(t_stack **stack, int argc);
 
@@ -52,7 +59,7 @@ int		ft_stacksize(t_stack *stack);
 
 void	ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int size);
 
-int	ft_stack_is_sorted(t_stack *stack);
+int		ft_stack_is_sorted(t_stack *stack);
 
 void	sort_3_elements(t_stack	**stack);
 
@@ -62,17 +69,11 @@ void	pb(t_stack **stack_b, t_stack **stack_a);
 
 void	ra(t_stack **stack);
 
-void	rb(t_stack **stack);
-
 void	rra(t_stack **stack);
-
-void	rrb(t_stack **stack);
 
 void	sa(t_stack **stack);
 
-void	sb(t_stack **stack);
-
-int	min_val_distance(t_stack *stack_a, int value);
+int		min_val_distance(t_stack *stack_a, int value);
 
 void	ft_free_leaks(t_stack *stack);
 

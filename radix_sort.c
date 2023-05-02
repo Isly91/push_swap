@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 08:58:59 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/05/01 16:30:28 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/02 20:43:23 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ t_stack	*ft_get_min(t_stack **stack, long limit)
 
 	if (!*stack)
 		return (NULL);
-
 	current = *stack;
 	min_found = INT_MAX;
 	min = NULL;
-
 	while (current)
 	{
 		if (current->content > limit && current->content < min_found)
@@ -63,10 +61,10 @@ void	ft_give_index(t_stack **stack, int size)
 	*stack = copy;
 }
 
-void	ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int	size)
+void	ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int	bit;
-	int i;
+	int	i;
 
 	bit = 1;
 	ft_give_index(stack_a, size);
@@ -85,6 +83,4 @@ void	ft_radix_sort(t_stack **stack_a, t_stack **stack_b, int	size)
 		while (*stack_b)
 			pa(stack_b, stack_a);
 	}
-	return ;
 }
-

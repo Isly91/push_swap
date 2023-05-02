@@ -3,7 +3,10 @@ SRC = push_swap.c \
 		push_swap_list_utils.c \
 		moves.c \
 		check_input.c \
-		radix_sort.c
+		radix_sort.c \
+		check_input2.c \
+		push_swap_utils.c \
+		moves2.c
 
 OBJSRC = $(SRC:.c=.o)
 
@@ -22,7 +25,7 @@ YELLOW = \x1b[33;01m
 all: $(EXC_NAME)
 $(EXC_NAME) : $(LIBFT) $(OBJSRC)
 	@cc $(CFLAGS) $(SRC) $(LIBFT) -o $(EXC_NAME)
-	@printf "$(YELLOW)and executable name push_swap is ready.\n $(RESET)"
+	@printf "$(YELLOW)and executable name push_swap is ready.$(RESET)"
 
 $(LIBFT) :
 	@make -C libft

@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 13:05:27 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/05/01 18:32:33 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/02 15:45:22 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,52 @@
 t_stack	*allocate_stack(int argc, char **numbers)
 {
 	t_stack	*stack;
-	int	i;
+	t_stack	*new;
+	int		i;
 
 	i = -1;
 	stack = NULL;
 	while (++i < argc)
-		lstadd_back(&stack, lstnew(ft_atoi(numbers[i])));
+	{
+		new = lstnew(ft_atoi(numbers[i]));
+		if (! new)
+		{
+			ft_free_leaks(stack);
+			exit(EXIT_FAILURE);
+		}
+		lstadd_back(&stack, new);
+	}
 	stack->index = 'a';
 	return (stack);
 }
 
 void	sort_stack(t_stack **stack_a, int argc)
 {
+	t_stack	*stack_b;
+
+	stack_b = NULL;
 	if (argc <= 5)
 		sort_elements(stack_a, argc);
 	else
-	{
-		t_stack *stack_b;
-		stack_b = NULL;
 		ft_radix_sort(stack_a, &stack_b, argc);
-	}
 }
-void f_leaks(void)
-{
-	system("leaks push_swap");
-}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
-	int		i;
-	atexit(f_leaks);
-	i = 0;
+
 	stack = NULL;
 	if (argc == 1)
 		exit(EXIT_SUCCESS);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		while (argv[i])
-			i++;
-		if (i == 0)
+		if (count_argc(argv) == 0)
 		{
 			write(2, "Error\n", 6);
 			exit(EXIT_FAILURE);
 		}
-		argc = i;
+		argc = count_argc(argv);
 	}
 	else
 	{

@@ -6,11 +6,25 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/16 14:29:05 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/04/25 18:51:37 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/02 11:00:46 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	minimum_value(t_stack *stack)
+{
+	int	tmp_value;
+
+	tmp_value = stack->content;
+	while (stack)
+	{
+		if (tmp_value > stack->content)
+			tmp_value = stack->content;
+		stack = stack->next;
+	}
+	return (tmp_value);
+}
 
 void	sort_3_elements(t_stack	**stack)
 {
@@ -43,92 +57,60 @@ void	sort_3_elements(t_stack	**stack)
 
 void	sort_4_elements(t_stack **stack_a, t_stack **stack_b)
 {
-	int	tmp_value;
-	int	distance;
+	int		min_value;
+	int		distance;
 	t_stack	*curr;
 
+	min_value = minimum_value(*stack_a);
 	curr = *stack_a;
-	tmp_value = curr->content;
-	while (curr->next)
-	{
-		if (curr->next->content < tmp_value)
-			tmp_value = curr->next->content;
-		curr = curr->next;
-	}
-	curr = *stack_a;
-	distance = min_val_distance(curr, tmp_value);
-	if(distance == 0)
-		pb(stack_a, stack_b);
-	else if (distance == 1)
-	{
-	 	sa(stack_a);
-		pb(stack_a, stack_b);
-	}
+	distance = min_val_distance(curr, min_value);
+	if (distance == 1)
+		sa(stack_a);
 	else if (distance == 2)
 	{
 		rra(stack_a);
 		rra(stack_a);
-		pb(stack_a, stack_b);
 	}
-	else
-	{
+	else if (distance == 3)
 		rra(stack_a);
-		pb(stack_a, stack_b);
-	}
+	pb(stack_a, stack_b);
 	sort_3_elements(stack_a);
 	pa(stack_b, stack_a);
 }
 
 void	sort_5_elements(t_stack **stack_a, t_stack **stack_b)
 {
-	int	tmp_value;
-	int	distance;
+	int		tmp_value;
+	int		distance;
 	t_stack	*curr;
 
-	curr = *stack_a;
-	tmp_value = curr->content;
-	while (curr->next)
-	{
-		if (curr->next->content < tmp_value)
-			tmp_value = curr->next->content;
-		curr = curr->next;
-	}
+	tmp_value = minimum_value(*stack_a);
 	curr = *stack_a;
 	distance = min_val_distance(curr, tmp_value);
-	if (distance == 0)
-		pb(stack_a, stack_b);
-	else if (distance == 1)
-	{
+	if (distance == 1)
 		sa(stack_a);
-		pb(stack_a, stack_b);
-	}
 	else if (distance == 2)
 	{
 		ra(stack_a);
 		ra(stack_a);
-		pb(stack_a, stack_b);
 	}
 	else if (distance == 3)
 	{
 		rra(stack_a);
 		rra(stack_a);
-		pb(stack_a, stack_b);
 	}
-	else
-	{
+	else if (distance == 4)
 		rra(stack_a);
-		pb(stack_a, stack_b);
-	}
+	pb(stack_a, stack_b);
 	sort_4_elements(stack_a, stack_b);
 	pa(stack_b, stack_a);
 }
 
 void	sort_elements(t_stack **stack, int argc)
 {
-	t_stack *stack_b;
-	
+	t_stack	*stack_b;
+
 	stack_b = NULL;
-	
 	if (argc <= 3)
 		free(stack_b);
 	if (argc == 1 || ft_stack_is_sorted(*stack))
