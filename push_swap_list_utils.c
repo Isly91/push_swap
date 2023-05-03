@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 12:12:45 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/05/02 15:47:57 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/03 15:23:42 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,15 @@ int	count_argc(char **argv)
 	while (argv[i])
 		i++;
 	return (i);
+}
+
+char	**handle_quotes(char **input)
+{
+	input = ft_split(input[1], ' ');
+	if (count_argc(input) == 0)
+	{
+		write(2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
+	return (input);
 }

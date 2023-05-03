@@ -6,7 +6,7 @@
 /*   By: ibehluli <ibehluli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/07 19:10:08 by ibehluli      #+#    #+#                 */
-/*   Updated: 2023/05/02 10:40:40 by ibehluli      ########   odam.nl         */
+/*   Updated: 2023/05/03 14:47:24 by ibehluli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_stack
 }	t_stack;
 
 int		ft_isnumber(int c);
+
+char	**handle_quotes(char **input);
 
 long	ft_long_atoi(const char *str);
 
