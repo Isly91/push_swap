@@ -31,10 +31,8 @@ char	*ft_itoa(int n)
 {
 	char	*string_with_numbers;
 	size_t	length;
-	size_t	i;
 	long	var_long;
 
-	i = 0;
 	var_long = (long) n;
 	length = ft_int_length(n) + (n < 0);
 	string_with_numbers = (char *) malloc(length + 1);

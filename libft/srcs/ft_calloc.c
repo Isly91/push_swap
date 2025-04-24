@@ -15,9 +15,7 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	char	*space_with_null_values;
-	int		i;
 
-	i = 0;
 	space_with_null_values = (char *) malloc(count * size);
 	if (!space_with_null_values)
 		return (NULL);
