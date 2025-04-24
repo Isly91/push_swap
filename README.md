@@ -45,9 +45,17 @@ Given a stack of integers, your goal is to output a sequence of operations that 
 
 ---
 
-## 🛠️ Usage
+### Run the program
 
-- ./push_swap 4 67 3 87 23
+- Type ./push_swap followed by a list of integers to sort them.
+- The program will output the sequence of operations needed to sort the numbers.
+- The program will also check for errors in the input (e.g., duplicates, non-integer values).
+- The program will exit with an error message if the input is invalid.
+- To run the program, you can use the following command:
+
+```bash
+./push_swap 4 67 3 87 23
+```
 
 - ./push_swap [list of integers]
 
