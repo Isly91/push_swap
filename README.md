@@ -13,9 +13,7 @@ Given a stack of integers, your goal is to output a sequence of operations that 
 - Only allowed operations (push, swap, rotate, reverse rotate)
 - The fewest possible moves
 
-You write two programs:
-1. `push_swap`: Takes unsorted numbers and prints the operations to sort them
-2. `checker`: Takes the operations and checks if they indeed sort the stack correctly (bonus)
+- `push_swap`: Takes unsorted numbers and prints the operations to sort them
 
 ---
 
