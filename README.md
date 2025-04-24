@@ -57,8 +57,6 @@ Given a stack of integers, your goal is to output a sequence of operations that 
 ./push_swap 4 67 3 87 23
 ```
 
-- ./push_swap [list of integers]
-
 ### Compile
 
 ```bash
